@@ -9,10 +9,10 @@ import SubCategoryListing from "./components/categoryManagement/SubCategoryListi
 import CommonLayout from "./components/commonLayout/CommonLayout.jsx";
 import CouponForm from "./components/couponManagement/CouponForm.jsx";
 import CouponList from "./components/couponManagement/CouponList.jsx";
-import Dashboard from "./components/Dashboard";
 import Finance from "./components/financeManagement/Finance.jsx";
 import InventoryManagement from "./components/inventoryManagement/InventoryManagement.jsx";
 import Login from "./components/Login.jsx";
+import NewDashboard from "./components/NewDasboard.jsx";
 import Orders from "./components/orderManagement/Orders.jsx";
 import OrdersDetail from "./components/orderManagement/OrdersDetail.jsx";
 import PaymentManagement from "./components/paymentManagement/PaymentManagement.jsx";
@@ -39,7 +39,7 @@ const App = () => {
       <Route element={<CommonLayout />}>
         <Route
           path="/dashboard"
-          element={<ProtectedRoute Component={Dashboard} />}
+          element={<ProtectedRoute Component={NewDashboard} />}
         />
 
         <Route

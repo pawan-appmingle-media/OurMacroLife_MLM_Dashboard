@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import CommonHeader from "../commonHeader/CommonHeader";
+import TeamReferral from "./TeamReferral";
+import DirectReferral from "./DirectReferral";
 
 const ReferralManagement = () => {
   const [activeTab, setActiveTab] = useState("direct");
@@ -7,6 +9,7 @@ const ReferralManagement = () => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+
 
   return (
     <>
@@ -41,26 +44,10 @@ const ReferralManagement = () => {
         {/* Content Area */}
         <div className="mt-6 p-4 bg-white shadow-md rounded-md">
           {activeTab === "direct" && (
-            <div>
-              <h2 className="text-lg font-semibold text-gray-800">
-                Direct Referral
-              </h2>
-              <p className="text-sm text-gray-600 mt-2">
-                Content for Direct Referral goes here.
-              </p>
-            </div>
+            <DirectReferral/>
           )}
 
-          {activeTab === "team" && (
-            <div>
-              <h2 className="text-lg font-semibold text-gray-800">
-                Team Referral
-              </h2>
-              <p className="text-sm text-gray-600 mt-2">
-                Content for Team Referral goes here.
-              </p>
-            </div>
-          )}
+          {activeTab === "team" && <TeamReferral />}
         </div>
       </div>
     </>

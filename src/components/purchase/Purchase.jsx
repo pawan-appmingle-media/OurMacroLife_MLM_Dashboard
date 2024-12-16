@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import CommonHeader from "../commonHeader/CommonHeader";
+import DirectPurchase from "./DirectPurchase";
+import TeamPurchase from "./TeamPurchase";
 
 const Purchase = () => {
   const [activeTab, setActiveTab] = useState("direct");
@@ -40,27 +42,9 @@ const Purchase = () => {
 
         {/* Content Area */}
         <div className="mt-6 p-4 bg-white shadow-md rounded-md">
-          {activeTab === "direct" && (
-            <div>
-              <h2 className="text-lg font-semibold text-gray-800">
-                Direct Purchase
-              </h2>
-              <p className="text-sm text-gray-600 mt-2">
-                Content for Direct Purchase goes here.
-              </p>
-            </div>
-          )}
+          {activeTab === "direct" && <DirectPurchase />}
 
-          {activeTab === "team" && (
-            <div>
-              <h2 className="text-lg font-semibold text-gray-800">
-                Team Purchase
-              </h2>
-              <p className="text-sm text-gray-600 mt-2">
-                Content for Team Purchase goes here.
-              </p>
-            </div>
-          )}
+          {activeTab === "team" && <TeamPurchase />}
         </div>
       </div>
     </>
