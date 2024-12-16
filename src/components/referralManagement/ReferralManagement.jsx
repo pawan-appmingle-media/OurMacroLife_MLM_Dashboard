@@ -1,11 +1,12 @@
 import React from "react";
-import Sidebar from "../Sidebar";
+import CommonHeader from "../commonHeader/CommonHeader";
 
 const ReferralManagement = () => {
   return (
     <>
-      <Sidebar />
-      <div>Referral</div>
+      <div>
+        <CommonHeader name={"Referral"} />
+      </div>
     </>
   );
 };

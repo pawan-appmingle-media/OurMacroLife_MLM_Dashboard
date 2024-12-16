@@ -1,9 +1,12 @@
 import React from "react";
+import CommonHeader from "../commonHeader/CommonHeader";
 
 const Purchase = () => {
   return (
     <>
-      <div>Purachse</div>
+      <div>
+        <CommonHeader name={"Purachse"} />
+      </div>
     </>
   );
 };
