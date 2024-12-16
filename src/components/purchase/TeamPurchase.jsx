@@ -67,7 +67,7 @@ const TeamPurchase = () => {
           <div className="bg-green-100 p-4 rounded-md text-center">
             <p className="text-sm text-gray-600">Total Team Purchases</p>
             <h3 className="text-2xl font-bold text-green-600">
-              ${totalTeamSpent}
+              ₹{totalTeamSpent}
             </h3>
           </div>
           <div className="bg-blue-100 p-4 rounded-md text-center">
@@ -117,7 +117,7 @@ const TeamPurchase = () => {
                 <td className="py-2">Level {purchase.level}</td>
                 <td className="py-2">{purchase.purchaseDate}</td>
                 <td className="py-2 text-green-600 font-bold">
-                  ${purchase.amount}
+                  ₹{purchase.amount}
                 </td>
                 <td className="py-2">{purchase.coinsEarned} Coins</td>
                 <td className="py-2">{purchase.status}</td>

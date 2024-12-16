@@ -129,11 +129,11 @@ const Users = () => {
                     <td className="py-2">{user.email}</td>
                     <td className="py-2">{user.phone}</td>
                     <td className="py-2">Level {user.level}</td>
-                    <td className="py-2">${user.totalPurchases}</td>
+                    <td className="py-2">₹{user.totalPurchases}</td>
                     <td className="py-2">{user.coinsEarned} Coins</td>
                     <td className="py-2">
                       <span
-                        className={`px-2 py-1 rounded-md text-sm ${
+                        className={`px-2 py-1 rounded-md text-sm ₹{
                           user.status === "Active"
                             ? "bg-green-100 text-green-600"
                             : "bg-red-100 text-red-600"

@@ -51,7 +51,7 @@ const NewDashboard = () => {
   };
 
   const recentActivity = [
-    { name: "John Doe", action: "Purchased $200", date: "2024-12-15" },
+    { name: "John Doe", action: "Purchased ₹200", date: "2024-12-15" },
     { name: "Jane Smith", action: "Referred a user", date: "2024-12-14" },
     { name: "Emily Brown", action: "Earned 20 Coins", date: "2024-12-13" },
   ];
@@ -69,7 +69,7 @@ const NewDashboard = () => {
         </div>
         <div className="bg-green-100 p-4 rounded-md text-center shadow-md">
           <p className="text-sm text-gray-600">Total Purchases</p>
-          <h3 className="text-2xl font-bold text-green-600">$12,500</h3>
+          <h3 className="text-2xl font-bold text-green-600">₹12,500</h3>
         </div>
         <div className="bg-yellow-100 p-4 rounded-md text-center shadow-md">
           <p className="text-sm text-gray-600">Coins Earned</p>
