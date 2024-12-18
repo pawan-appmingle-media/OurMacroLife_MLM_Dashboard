@@ -16,9 +16,9 @@ const Purchase = () => {
         <CommonHeader name={"Purchase"} />
 
         {/* Navigation Tabs */}
-        <div className="flex mt-4 py-1 rounded-md shadow-sm">
+        <div className="flex mt-4 p-1 rounded-md shadow-sm">
           <button
-            className={`px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ₹{
+            className={`px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ${
               activeTab === "direct"
                 ? "bg-blue-500 text-white"
                 : "bg-white text-gray-700 border border-gray-300"
@@ -29,7 +29,7 @@ const Purchase = () => {
           </button>
 
           <button
-            className={`ml-4 px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ₹{
+            className={`ml-4 px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ${
               activeTab === "team"
                 ? "bg-blue-500 text-white"
                 : "bg-white text-gray-700 border border-gray-300"

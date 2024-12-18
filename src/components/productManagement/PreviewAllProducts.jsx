@@ -22,7 +22,7 @@ const PreviewAllProducts = () => {
           },
         }
       );
-      const foundProduct = response.data.products.find((p) => p.id == id);
+      const foundProduct = response.data.products.find((p) => p.id === id);
       setProduct(foundProduct);
       setPrices(foundProduct.prices);
       console.log("product for config ", foundProduct);

@@ -134,7 +134,7 @@ const CouponList = () => {
           <Link
             to="/coupon-form"
             className=" text-white px-5 py-2 rounded-lg hover:bg-green-600 transition duration-200 ease-in-out shadow-md"
-            style={{ backgroundColor: "#172552" }}
+            style={{ backgroundColor: "#172552", textDecoration: "none" }}
           >
             Create New Coupon
           </Link>

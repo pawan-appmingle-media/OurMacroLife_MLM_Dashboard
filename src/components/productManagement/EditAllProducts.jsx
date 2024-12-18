@@ -36,13 +36,9 @@ const EditAllProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const baseURL = process.env.REACT_APP_API_BASE_URL;
 
-  // bhu
   const handleDescriptionChange = (value) => {
     setProductData({ ...productData, description: value }); // Update product data
   };
-
-  //bhu
-  // Remove image by index
   // Handle multiple image uploads
   const handleImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -93,12 +89,6 @@ const EditAllProducts = () => {
     setProductData({ ...productData, prices: updatedPrices });
   };
 
-  // const handleAddImage = (priceIndex) => {
-  //   const updatedPrices = [...productData.prices];
-  //   updatedPrices[priceIndex].images.push(""); // Push an empty string to show a new input
-  //   setProductData({ ...productData, prices: updatedPrices });
-  // };
-
   // Fetch all categories when the component mounts
   useEffect(() => {
     const fetchCategories = async () => {
@@ -114,7 +104,7 @@ const EditAllProducts = () => {
 
     fetchCategories();
     window.scrollTo(0, 0);
-  }, []);
+  }, [categories]);
 
   // Fetch subcategories when a category is selected
   const handleCategoryChange = async (e) => {
@@ -158,12 +148,12 @@ const EditAllProducts = () => {
   };
 
   // Handle specification changes
-  const handleSpecificationChange = (priceIndex, specIndex, e) => {
-    const { name, value } = e.target;
-    const prices = [...productData.prices];
-    prices[priceIndex].specifications[specIndex][name] = value;
-    setProductData({ ...productData, prices });
-  };
+  // const handleSpecificationChange = (priceIndex, specIndex, e) => {
+  //   const { name, value } = e.target;
+  //   const prices = [...productData.prices];
+  //   prices[priceIndex].specifications[specIndex][name] = value;
+  //   setProductData({ ...productData, prices });
+  // };
 
   // Handle configuration changes
   const handleConfigurationChange = (priceIndex, configIndex, e) => {
@@ -195,11 +185,11 @@ const EditAllProducts = () => {
   };
 
   // Add a new specification to a price entry
-  const handleAddSpecification = (index) => {
-    const prices = [...productData.prices];
-    prices[index].specifications.push({ spec_key: "", spec_value: "" });
-    setProductData({ ...productData, prices });
-  };
+  // const handleAddSpecification = (index) => {
+  //   const prices = [...productData.prices];
+  //   prices[index].specifications.push({ spec_key: "", spec_value: "" });
+  //   setProductData({ ...productData, prices });
+  // };
 
   // Add a new configuration to a price entry
   const handleAddConfiguration = (index) => {
@@ -214,27 +204,27 @@ const EditAllProducts = () => {
   };
 
   // Add a new image to a price entry
-  const handleAddImage = (priceIndex) => {
-    const prices = [...productData.prices];
-    prices[priceIndex].images.push(null); // Placeholder for the new image
-    setProductData({ ...productData, prices });
-  };
+  // const handleAddImage = (priceIndex) => {
+  //   const prices = [...productData.prices];
+  //   prices[priceIndex].images.push(null); // Placeholder for the new image
+  //   setProductData({ ...productData, prices });
+  // };
 
   // Handle image changes
-  const handleImageChange = (priceIndex, imgIndex, e) => {
-    const file = e.target.files[0]; // Only handle the first file
+  // const handleImageChange = (priceIndex, imgIndex, e) => {
+  //   const file = e.target.files[0]; // Only handle the first file
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result; // This is the base64 encoded image string
-        const prices = [...productData.prices];
-        prices[priceIndex].images[imgIndex] = base64String; // Store base64 string instead of file
-        setProductData({ ...productData, prices });
-      };
-      reader.readAsDataURL(file); // Convert file to base64
-    }
-  };
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       const base64String = reader.result; // This is the base64 encoded image string
+  //       const prices = [...productData.prices];
+  //       prices[priceIndex].images[imgIndex] = base64String; // Store base64 string instead of file
+  //       setProductData({ ...productData, prices });
+  //     };
+  //     reader.readAsDataURL(file); // Convert file to base64
+  //   }
+  // };
 
   // Form submission
   const handleSubmit = async (e) => {
@@ -289,15 +279,6 @@ const EditAllProducts = () => {
             className="w-full border border-gray-300 rounded p-2"
           />
 
-          {/* <textarea
-            name="description"
-            placeholder="Product Description"
-            value={productData.description}
-            onChange={handleInputChange}
-            required
-            className="w-full border border-gray-300 rounded p-2"
-          /> */}
-
           {/* description quill wala */}
 
           <ReactQuill
@@ -305,9 +286,6 @@ const EditAllProducts = () => {
             onChange={handleDescriptionChange}
             placeholder="Product Description"
             className="w-full border rounded p-2"
-            // style={{
-            //   height: "200px", // Set custom height
-            // }}
           />
           {/* end description quill */}
 
@@ -348,7 +326,6 @@ const EditAllProducts = () => {
             </div>
           </div>
 
-          {/* Multiple Image Input */}
           {/* Multiple Image Input */}
           <input
             type="file"
@@ -439,17 +416,6 @@ const EditAllProducts = () => {
                 className="w-full border border-gray-300 rounded p-2 mb-2"
               />
 
-              {/* <h3 className="font-semibold mt-2">Images</h3>
-              {price.images.map((img, imgIndex) => (
-                <div key={imgIndex} className="mb-2">
-                  <input
-                    type="file"
-                    onChange={(e) => handleImageChange(priceIndex, imgIndex, e)}
-                    className="w-full border border-gray-300 rounded p-2"
-                  />
-                </div>
-              ))} */}
-
               <h3 className="font-semibold mt-2">Images</h3>
               <div className="flex flex-wrap gap-4">
                 {price.images.map((img, imgIndex) => (
@@ -474,14 +440,6 @@ const EditAllProducts = () => {
                 ))}
               </div>
 
-              {/* Add New Image Input */}
-              {/* <input
-              type="file"
-              placeholder=" Add More Images"
-              onChange={(e) => handleAddPriceImage(priceIndex, e)}
-              className="w-full border border-gray-300 rounded p-2 mt-4"
-            /> */}
-
               {/* Hidden File Input */}
               <input
                 type="file"
@@ -497,15 +455,6 @@ const EditAllProducts = () => {
               >
                 Add More Images
               </label>
-
-              {/* 
-              <button
-                type="button"
-                onClick={() =>  handleAddPriceImage(priceIndex)}
-                className="text-blue-500"
-              >
-                Add More Images
-              </button> */}
 
               <h3 className="font-semibold mt-4">Configurations</h3>
               {price.configuration.map((config, configIndex) => (

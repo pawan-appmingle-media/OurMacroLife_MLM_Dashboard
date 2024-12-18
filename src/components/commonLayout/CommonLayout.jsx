@@ -7,7 +7,7 @@ const CommonLayout = () => {
         <div className="">
           <Sidebar />
         </div>
-        <div className="border border-black border-4 w-full m-2">
+        <div className="w-full m-2">
           <Outlet />
         </div>
       </div>

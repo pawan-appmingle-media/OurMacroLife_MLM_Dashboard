@@ -49,7 +49,6 @@ const NewDashboard = () => {
       },
     ],
   };
-
   const recentActivity = [
     { name: "John Doe", action: "Purchased ₹200", date: "2024-12-15" },
     { name: "Jane Smith", action: "Referred a user", date: "2024-12-14" },

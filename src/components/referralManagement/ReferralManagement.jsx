@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CommonHeader from "../commonHeader/CommonHeader";
-import TeamReferral from "./TeamReferral";
 import DirectReferral from "./DirectReferral";
+import TeamReferral from "./TeamReferral";
 
 const ReferralManagement = () => {
   const [activeTab, setActiveTab] = useState("direct");
@@ -10,14 +10,13 @@ const ReferralManagement = () => {
     setActiveTab(tab);
   };
 
-
   return (
     <>
       <div className="max-w-full p-4">
         <CommonHeader name={"Referral"} />
 
         {/* Navigation Tabs */}
-        <div className="flex mt-4 py-1 rounded-md shadow-sm">
+        <div className="flex mt-4 p-1 rounded-md shadow-sm inline-block">
           <button
             className={`px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ${
               activeTab === "direct"
@@ -43,9 +42,7 @@ const ReferralManagement = () => {
 
         {/* Content Area */}
         <div className="mt-6 p-4 bg-white shadow-md rounded-md">
-          {activeTab === "direct" && (
-            <DirectReferral/>
-          )}
+          {activeTab === "direct" && <DirectReferral />}
 
           {activeTab === "team" && <TeamReferral />}
         </div>

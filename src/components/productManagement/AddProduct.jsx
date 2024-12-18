@@ -49,7 +49,7 @@ const AddProduct = () => {
 
     fetchCategories();
     window.scrollTo(0, 0);
-  }, []);
+  }, [categories]);
 
   // Fetch subcategories when a category is selected
   const handleCategoryChange = async (e) => {

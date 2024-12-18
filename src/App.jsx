@@ -20,7 +20,7 @@ import AddProduct from "./components/productManagement/AddProduct.jsx";
 import EditAllProducts from "./components/productManagement/EditAllProducts.jsx";
 import PreviewAllProducts from "./components/productManagement/PreviewAllProducts.jsx";
 import ProductList from "./components/productManagement/ProductList.jsx";
-import ProfileUpload from "./components/profileManagement/Profile.jsx";
+import ProfileUpload from "./components/profileManagement/ProfilePage.jsx";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute.jsx";
 import Purchase from "./components/purchase/Purchase.jsx";
 import Referral from "./components/referralManagement/ReferralManagement.jsx";
@@ -28,6 +28,7 @@ import Register from "./components/Register.jsx";
 import Settings from "./components/Settings";
 import SignUp from "./components/SignUp.jsx";
 import Support from "./components/supportManagement/Support.jsx";
+import Teams from "./components/teamsManagement/Teams.jsx";
 import Users from "./components/users/Users.jsx";
 
 const App = () => {
@@ -121,6 +122,7 @@ const App = () => {
           path="/coupons"
           element={<ProtectedRoute Component={CouponList} />}
         />
+        <Route path="/teams" element={<ProtectedRoute Component={Teams} />} />
         <Route
           path="/coupon-form"
           element={<ProtectedRoute Component={CouponForm} />}

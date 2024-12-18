@@ -1,81 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 
 const DirectReferral = () => {
-  const referrals = [
-    {
-      name: "John Doe",
-      dateJoined: "2024-12-01",
-      coins: 100,
-      status: "Active",
-    },
-    {
-      name: "Jane Smith",
-      dateJoined: "2024-12-03",
-      coins: 50,
-      status: "Inactive",
-    },
-    {
-      name: "Michael Lee",
-      dateJoined: "2024-12-05",
-      coins: 80,
-      status: "Active",
-    },
-  ];
+  const [referralCode, setReferralCode] = useState("");
+  const [coins, setCoins] = useState("");
+  const [status, setStatus] = useState("");
 
-  const totalCoins = referrals.reduce(
-    (acc, referral) => acc + referral.coins,
-    0
-  );
+  const handleReferralCodeChange = (e) => {
+    setReferralCode(e.target.value);
+  };
+
+  const handleCoinsChange = (e) => {
+    setCoins(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
   return (
-    <>
-      <div className="p-6 bg-gray-100 min-h-screen">
-        {/* User Overview */}
-        <div className="bg-white p-4 rounded-md shadow-md mb-6">
-          <h2 className="text-lg font-bold">Referral Dashboard</h2>
-          <p className="text-gray-500">
-            Track your referral earnings and activity.
-          </p>
-          <div className="mt-4">
-            <p className="text-sm">
-              Total Coins Earned:{" "}
-              <span className="font-bold text-green-600">
-                {totalCoins} Coins
-              </span>
-            </p>
-            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-              Share Referral Link
-            </button>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      {/* Page Header */}
+      <h1 className="text-2xl font-bold mb-6">Direct Referral</h1>
+
+      {/* Introduction */}
+      <div className="bg-white p-6 rounded-md shadow-md mb-6">
+        <p className="text-lg font-semibold mb-4">About Coins</p>
+        <p className="text-sm text-gray-600">
+          Coins are earned through successful referrals in the MLM system. The
+          more users you refer, the more coins you can accumulate.
+        </p>
+      </div>
+
+      {/* Referral Form */}
+      <div className="bg-white p-6 rounded-md shadow-md mb-6">
+        <h3 className="text-xl font-semibold mb-4">Referral Information</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label
+              htmlFor="referralCode"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
+              Referral Code
+            </label>
+            <input
+              id="referralCode"
+              type="text"
+              value={referralCode}
+              onChange={handleReferralCodeChange}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              placeholder="Enter referral code"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="coins"
+              className="block text-sm font-medium text-gray-600 mb-2"
+            >
+              Coins Earned
+            </label>
+            <input
+              id="coins"
+              type="number"
+              value={coins}
+              onChange={handleCoinsChange}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              placeholder="Enter coins earned"
+            />
           </div>
         </div>
 
-        {/* Referral List */}
-        <div className="bg-white p-4 rounded-md shadow-md">
-          <h3 className="text-lg font-bold mb-4">Direct Referrals</h3>
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b">
-                <th className="py-2">Name</th>
-                <th className="py-2">Date Joined</th>
-                <th className="py-2">Coins Earned</th>
-                <th className="py-2">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {referrals.map((referral, index) => (
-                <tr key={index} className="border-b hover:bg-gray-50">
-                  <td className="py-2">{referral.name}</td>
-                  <td className="py-2">{referral.dateJoined}</td>
-                  <td className="py-2 text-green-600 font-bold">
-                    {referral.coins}
-                  </td>
-                  <td className="py-2">{referral.status}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-4">
+          <label
+            htmlFor="status"
+            className="block text-sm font-medium text-gray-600 mb-2"
+          >
+            Referral Status
+          </label>
+          <input
+            id="status"
+            type="text"
+            value={status}
+            onChange={handleStatusChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+            placeholder="Enter referral status"
+          />
         </div>
       </div>
-    </>
+
+      {/* Referral Data Listing */}
+      <div className="bg-white p-6 rounded-md shadow-md">
+        <h3 className="text-xl font-semibold mb-4">Referral Data</h3>
+        <table className="min-w-full table-auto">
+          <thead className="border-b">
+            <tr>
+              <th className="px-4 py-2 text-left">Referral Code</th>
+              <th className="px-4 py-2 text-left">Coins Earned</th>
+              <th className="px-4 py-2 text-left">Referral Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Add example referral data rows here */}
+            <tr className="border-b hover:bg-gray-50">
+              <td className="px-4 py-2">REF123</td>
+              <td className="px-4 py-2">50</td>
+              <td className="px-4 py-2">Active</td>
+            </tr>
+            <tr className="border-b hover:bg-gray-50">
+              <td className="px-4 py-2">REF124</td>
+              <td className="px-4 py-2">30</td>
+              <td className="px-4 py-2">Pending</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import React, { useCallback, useEffect, useState } from "react";
+import { FaEdit, FaEye, FaSearch, FaTrash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import CommonHeader from "../commonHeader/CommonHeader";
 
@@ -9,15 +9,13 @@ const ProductList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(5);
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   const baseURL = process.env.REACT_APP_API_BASE_URL;
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       const response = await axios.get(
         `${baseURL}/product/getpbyvendor/${userId}`,
@@ -27,10 +25,12 @@ const ProductList = () => {
       setProducts(response.data.products.reverse());
     } catch (error) {
       console.error("Error in fetching Products", error);
-    } finally {
-      setLoading(false);
     }
-  };
+  }, [baseURL, userId, token]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   const handleEdit = (productId) => {
     navigate(`/editProduct/${productId}`);
@@ -104,26 +104,28 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4  ">
+      <div className="container mx-auto p-4">
         <CommonHeader name={"Our Products"} />
 
-        <div className="flex justify-between">
-          <div className="w-2/3 ">
+        {/* Search Input */}
+        <div className="flex justify-between mb-2">
+          <div className="w-2/3 relative">
+            {/* Make the container relative */}
             <input
               type="text"
-              className="border border-gray-300 p-2 rounded w-full"
-              placeholder="Search products..."
               value={searchTerm}
+              placeholder="Search categories"
+              className="w-full pl-10 pb-2 pt-2 border border-gray-300 rounded-lg" // Add left padding for icon
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />{" "}
+            {/* Position the icon */}
           </div>
-          <div>
-            <Link to="/add-product" className="flex justify-end mb-3">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Add Product
-              </button>
-            </Link>
-          </div>
+          <Link to="/addCategory">
+            <div className="p-2 cursor-pointer text-white rounded-sm bg-blue-500">
+              <h3>+ Add Product</h3>
+            </div>
+          </Link>
         </div>
 
         <table className="min-w-full bg-white border border-gray-300">
@@ -138,7 +140,7 @@ const ProductList = () => {
             </tr>
           </thead>
           <tbody>
-            {currentProducts.length ? (
+            {currentProducts.length >= 0 ? (
               currentProducts.map((product) => (
                 <tr key={product.id}>
                   <td className="p-4 text-blue-500 font-semibold border-b">

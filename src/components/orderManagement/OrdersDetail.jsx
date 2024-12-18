@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const OrdersDetail = () => {
-  const { id } = useParams(); // Retrieve the orderId from the URL
+  // const { id } = useParams();
   const [product, setProducts] = useState([]);
   const [fetchData, setFetchData] = useState(false);
   const [productImage, setProductImage] = useState();
   const [priceProduct, setPriceProduct] = useState([]);
-  const [allProducts, setAllProducts] = useState([]); // Store all products from the API
+  // const [allProducts, setAllProducts] = useState([]);
   const [configPrice, setConfigPrice] = useState([]);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");

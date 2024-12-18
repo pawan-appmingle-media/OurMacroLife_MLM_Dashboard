@@ -7,24 +7,26 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { FaUsers } from "react-icons/fa6";
-
-import { BiSolidPurchaseTagAlt } from "react-icons/bi";
-
-import { AiOutlineStock } from "react-icons/ai";
-import { BiSupport } from "react-icons/bi";
-import { BsGraphUp } from "react-icons/bs";
-import { FaProductHunt, FaTruck, FaUser } from "react-icons/fa";
-
-import { FaCogs, FaDollarSign } from "react-icons/fa";
-import { IoWalletOutline } from "react-icons/io5";
-import { MdCategory, MdDashboard } from "react-icons/md";
-import { RiCouponFill, RiLogoutBoxLine } from "react-icons/ri";
-
-import { FiMenu } from "react-icons/fi";
-import { RiMenuUnfold4Line } from "react-icons/ri";
-
 import React, { useEffect, useState } from "react";
+import { BiSolidPurchaseTagAlt, BiSupport } from "react-icons/bi";
+import { IoAnalyticsSharp } from "react-icons/io5";
+import { MdInventory, MdOutlinePayment } from "react-icons/md";
+
+import {
+  FaCogs,
+  FaDollarSign,
+  FaProductHunt,
+  FaTruck,
+  FaUser,
+} from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+import { FiMenu } from "react-icons/fi";
+import { MdCategory, MdDashboard } from "react-icons/md";
+import {
+  RiCouponFill,
+  RiLogoutBoxLine,
+  RiMenuUnfold4Line,
+} from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
@@ -65,14 +67,15 @@ const Sidebar = () => {
     { to: "/purchase", text: "Purchase", icon: <BiSolidPurchaseTagAlt /> },
     { to: "/users", text: "Users", icon: <FaUsers /> },
     { to: "/products", text: "Products", icon: <BiSolidPurchaseTagAlt /> },
-    { to: "/payment", text: "Payments", icon: <IoWalletOutline /> },
+    { to: "/payment", text: "Payments", icon: <MdOutlinePayment /> },
     { to: "/orders", text: "Orders", icon: <FaTruck /> },
     { to: "/category", text: "Category", icon: <MdCategory /> },
     { to: "/coupons", text: "Coupons", icon: <RiCouponFill /> },
     { to: "/finance", text: "Finance", icon: <FaDollarSign /> },
-    { to: "/analatics", text: "Analytics", icon: <BsGraphUp /> },
+    { to: "/analatics", text: "Analytics", icon: <IoAnalyticsSharp /> },
+    { to: "/teams", text: "Teams", icon: <FaUsers /> },
     { to: "/support", text: "Support", icon: <BiSupport /> },
-    { to: "/inventory", text: "Inventory", icon: <AiOutlineStock /> },
+    { to: "/inventory", text: "Inventory", icon: <MdInventory /> },
     { to: "/profile", text: "Profile", icon: <FaUser /> },
     { to: "/settings", text: "Settings", icon: <FaCogs /> },
     {
@@ -94,7 +97,7 @@ const Sidebar = () => {
             width: isCollapsed ? 70 : 275,
             boxSizing: "border-box",
             backgroundColor: "#f5f5f5",
-            // width: "280px",
+            overflow: "sc",
           },
         }}
       >
@@ -126,7 +129,9 @@ const Sidebar = () => {
             OurMacroLifeMLM
           </span>
         </Box>
-        <List>
+        <List className="custom-scrollbar">
+          {" "}
+          {/* Add class here */}
           {links.map((link, index) => (
             <ListItem
               button

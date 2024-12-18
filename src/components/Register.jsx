@@ -46,10 +46,10 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData({ ...formData, [name]: files[0] });
-  };
+  // const handleFileChange = (e) => {
+  //   const { name, files } = e.target;
+  //   setFormData({ ...formData, [name]: files[0] });
+  // };
 
   const handleNext = () => {
     if (activeStep < steps.length - 1) {

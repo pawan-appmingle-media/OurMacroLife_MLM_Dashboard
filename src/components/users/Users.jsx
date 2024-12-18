@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import CommonHeader from "../commonHeader/CommonHeader";
 
 const Users = () => {
@@ -87,13 +88,16 @@ const Users = () => {
           <div className="bg-white p-4 rounded-md shadow-md mb-6">
             <h3 className="text-lg font-bold mb-4">Filters</h3>
             <div className="flex items-center gap-4">
-              <input
-                type="text"
-                placeholder="Search by name or email"
-                className="px-4 py-2 border rounded-md w-full focus:ring-2 focus:ring-blue-500"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  placeholder="Search by name or email"
+                  className="px-6 py-2 pl-10 border border-red-500 border-4 rounded-md w-full focus:ring-2 focus:ring-blue-500"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <FaSearch className="absolute top-3 left-3 text-gray-500" />
+              </div>
               <select
                 className="px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
                 value={filterStatus}
