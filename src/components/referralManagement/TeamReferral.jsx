@@ -1,4 +1,5 @@
 import React from "react";
+import TeamReferralInputs from "./TeamReferralInputs";
 
 const TeamReferral = () => {
   const teamMembers = [
@@ -15,72 +16,42 @@ const TeamReferral = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
+      {/* Page Header */}
+      <h1 className="text-2xl font-bold mb-6">Team Referral</h1>
       {/* Team Overview */}
       <div className="bg-white p-4 rounded-md shadow-md mb-6">
-        <h2 className="text-lg font-bold">Team Referral Dashboard</h2>
+        <h2 className="text-lg font-semibold mb-4">Team Referral</h2>
         <p className="text-gray-500">
-          Monitor your team referrals and their contributions.
+          Elevate your MLM success with our Team Referral Management Program.
+          Admins can define coin rewards for team referrals, encouraging
+          collaboration and network expansion. Customize incentives for team
+          performance and monitor progress seamlessly. Foster teamwork, amplify
+          growth, and reward collective efforts with a structured and
+          transparent rewards system!
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-4">
-          <div className="bg-green-100 p-4 rounded-md text-center">
-            <p className="text-sm text-gray-600">Total Coins Earned</p>
-            <h3 className="text-2xl font-bold text-green-600">
-              {totalCoins} Coins
-            </h3>
+        <div className="my-2 w-1/2">
+          <label
+            htmlFor="referralCode"
+            className="block text-sm font-medium text-purple-500 mb-2"
+          >
+            Enter Team Referral Coins
+          </label>
+          <div>
+            <TeamReferralInputs levelNum={1} showButton={false} />
+            <TeamReferralInputs levelNum={2} />
+            <TeamReferralInputs levelNum={3} />
+            <TeamReferralInputs levelNum={4} />
+            <TeamReferralInputs levelNum={5} />
+            <TeamReferralInputs levelNum={6} />
+            <TeamReferralInputs levelNum={7} />
+            <TeamReferralInputs levelNum={8} />
+            <TeamReferralInputs levelNum={9} />
+            <TeamReferralInputs levelNum={10} />
+            <TeamReferralInputs levelNum={11} />
+            <TeamReferralInputs levelNum={12} />
+            <TeamReferralInputs levelNum={13} />
+            <TeamReferralInputs levelNum={14} />
           </div>
-          <div className="bg-blue-100 p-4 rounded-md text-center">
-            <p className="text-sm text-gray-600">Active Members</p>
-            <h3 className="text-2xl font-bold text-blue-600">
-              {activeMembers}
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      {/* Team Members List */}
-      <div className="bg-white p-4 rounded-md shadow-md mb-6">
-        <h3 className="text-lg font-bold mb-4">Team Members</h3>
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b">
-              <th className="py-2">Name</th>
-              <th className="py-2">Level</th>
-              <th className="py-2">Coins Earned</th>
-              <th className="py-2">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {teamMembers.map((member, index) => (
-              <tr key={index} className="border-b hover:bg-gray-50">
-                <td className="py-2">{member.name}</td>
-                <td className="py-2">Level {member.level}</td>
-                <td className="py-2 text-green-600 font-bold">
-                  {member.coins}
-                </td>
-                <td className="py-2">{member.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Referral Hierarchy */}
-      <div className="bg-white p-4 rounded-md shadow-md">
-        <h3 className="text-lg font-bold mb-4">Referral Hierarchy</h3>
-        <div className="bg-gray-50 p-4 rounded-md">
-          <p className="text-gray-500">Level 1</p>
-          <ul className="ml-4 list-disc text-gray-700">
-            <li>John Doe</li>
-          </ul>
-          <p className="mt-4 text-gray-500">Level 2</p>
-          <ul className="ml-4 list-disc text-gray-700">
-            <li>Jane Smith</li>
-            <li>Michael Lee</li>
-          </ul>
-          <p className="mt-4 text-gray-500">Level 3</p>
-          <ul className="ml-4 list-disc text-gray-700">
-            <li>Emily Brown</li>
-          </ul>
         </div>
       </div>
     </div>

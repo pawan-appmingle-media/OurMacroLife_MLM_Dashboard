@@ -63,11 +63,19 @@ const Sidebar = () => {
 
   const links = [
     { to: "/dashboard", text: "Dashboard", icon: <MdDashboard /> },
-    { to: "/referral", text: "Referral", icon: <FaProductHunt /> },
-    { to: "/purchase", text: "Purchase", icon: <BiSolidPurchaseTagAlt /> },
-    { to: "/users", text: "Users", icon: <FaUsers /> },
-    { to: "/products", text: "Products", icon: <BiSolidPurchaseTagAlt /> },
-    { to: "/payment", text: "Payments", icon: <MdOutlinePayment /> },
+    { to: "/referral", text: "Referral Management", icon: <FaProductHunt /> },
+    {
+      to: "/purchase",
+      text: "Purchase Management",
+      icon: <BiSolidPurchaseTagAlt />,
+    },
+    { to: "/users", text: "Users Management", icon: <FaUsers /> },
+    {
+      to: "/products",
+      text: "Products Management",
+      icon: <BiSolidPurchaseTagAlt />,
+    },
+    { to: "/payment", text: "Payment Management", icon: <MdOutlinePayment /> },
     { to: "/orders", text: "Orders", icon: <FaTruck /> },
     { to: "/category", text: "Category", icon: <MdCategory /> },
     { to: "/coupons", text: "Coupons", icon: <RiCouponFill /> },
@@ -126,7 +134,7 @@ const Sidebar = () => {
               textAlign: "start",
             }}
           >
-            OurMacroLifeMLM
+            Our Micro Life
           </span>
         </Box>
         <List className="custom-scrollbar">

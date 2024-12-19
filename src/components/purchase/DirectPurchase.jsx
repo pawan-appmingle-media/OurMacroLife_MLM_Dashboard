@@ -1,97 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaCheckCircle } from "react-icons/fa";
+import { GiTwoCoins } from "react-icons/gi";
 
 const DirectPurchase = () => {
-  const purchases = [
-    {
-      productName: "Wireless Headphones",
-      purchaseDate: "2024-12-01",
-      amount: 120,
-      coinsEarned: 10,
-      status: "Completed",
-    },
-    {
-      productName: "Smartphone",
-      purchaseDate: "2024-12-05",
-      amount: 650,
-      coinsEarned: 50,
-      status: "Pending",
-    },
-    {
-      productName: "Gaming Chair",
-      purchaseDate: "2024-12-08",
-      amount: 300,
-      coinsEarned: 30,
-      status: "Completed",
-    },
-  ];
-
-  const totalSpent = purchases.reduce(
-    (acc, purchase) => acc + purchase.amount,
-    0
-  );
-  const totalCoins = purchases.reduce(
-    (acc, purchase) => acc + purchase.coinsEarned,
-    0
-  );
+  const [referralCode, setReferralCode] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const handleReferralCodeChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      // Allow only digits
+      setReferralCode(e.target.value);
+    }
+  };
+  const handleSubmit = () => {
+    if (referralCode.trim() !== "") {
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3 * 1000); // Hide success message after 3 seconds
+    }
+  };
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      {/* Purchase Overview */}
-      <div className="bg-white p-4 rounded-md shadow-md mb-6">
-        <h2 className="text-lg font-bold">Direct Purchase Dashboard</h2>
-        <p className="text-gray-500">
-          Track your direct purchases and rewards.
-        </p>
-        <div className="mt-4 grid grid-cols-2 gap-4">
-          <div className="bg-green-100 p-4 rounded-md text-center">
-            <p className="text-sm text-gray-600">Total Amount Spent</p>
-            <h3 className="text-2xl font-bold text-green-600">₹{totalSpent}</h3>
-          </div>
-          <div className="bg-blue-100 p-4 rounded-md text-center">
-            <p className="text-sm text-gray-600">Coins Earned</p>
-            <h3 className="text-2xl font-bold text-blue-600">
-              {totalCoins} Coins
-            </h3>
-          </div>
-        </div>
-      </div>
+      {/* Page Header */}
+      <h1 className="text-2xl font-bold mb-6">Direct Purchase</h1>
 
-      {/* Purchase History */}
-      <div className="bg-white p-4 rounded-md shadow-md">
-        <h3 className="text-lg font-bold mb-4">Purchase History</h3>
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b">
-              <th className="py-2">Product Name</th>
-              <th className="py-2">Purchase Date</th>
-              <th className="py-2">Amount</th>
-              <th className="py-2">Coins Earned</th>
-              <th className="py-2">Status</th>
-              <th className="py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {purchases.map((purchase, index) => (
-              <tr key={index} className="border-b hover:bg-gray-50">
-                <td className="py-2">{purchase.productName}</td>
-                <td className="py-2">{purchase.purchaseDate}</td>
-                <td className="py-2 text-green-600 font-bold">
-                  ₹{purchase.amount}
-                </td>
-                <td className="py-2">{purchase.coinsEarned} Coins</td>
-                <td className="py-2">{purchase.status}</td>
-                <td className="py-2">
-                  <button className="mr-2 px-3 py-1 text-sm bg-gray-200 rounded-md hover:bg-gray-300">
-                    View
-                  </button>
-                  <button className="px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                    Invoice
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Introduction */}
+      <div className="bg-white p-6 rounded-md shadow-md mb-4">
+        <p className="text-lg font-semibold mb-4">Direct Purchase</p>
+        <p className="text-md text-gray-600">
+          The MLM Purchase Management Program allows administrators to manage
+          and monitor the distribution of coins to users based on their direct
+          purchases. This feature ensures that users are rewarded with coins for
+          every direct purchase they make, in line with the business's marketing
+          structure.
+        </p>
+        <div className="my-2 w-1/3">
+          <label
+            htmlFor="referralCode"
+            className="block text-sm font-medium text-purple-500 mb-2"
+          >
+            Enter Direct Purchase Coins
+          </label>
+          <div className="relative flex p-1  ">
+            <input
+              id="referralCode"
+              type="text"
+              value={referralCode}
+              onChange={handleReferralCodeChange}
+              className="w-full px-8 border border-gray-300 rounded-md"
+              placeholder="Enter Coins"
+            />
+            <span className="font-bold absolute right-[120px] top-[10px] text-lg">
+              %
+            </span>
+            <GiTwoCoins className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
+            <button
+              type="submit"
+              className="bg-purple-500 text-white rounded-sm ml-2 py-2 px-4 active:border-none"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
+          {showSuccess && (
+            <p className="flex text-green-700 text-xs mr-6 justify-end font-bold">
+              Success
+              <FaCheckCircle className="m-1" />
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

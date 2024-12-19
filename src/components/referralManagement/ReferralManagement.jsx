@@ -13,14 +13,14 @@ const ReferralManagement = () => {
   return (
     <>
       <div className="max-w-full p-4">
-        <CommonHeader name={"Referral"} />
+        <CommonHeader name={"Referral Management"} />
 
         {/* Navigation Tabs */}
         <div className="flex mt-4 p-1 rounded-md shadow-sm inline-block">
           <button
             className={`px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ${
               activeTab === "direct"
-                ? "bg-blue-500 text-white"
+                ? "bg-purple-500 text-white"
                 : "bg-white text-gray-700 border border-gray-300"
             }`}
             onClick={() => handleTabChange("direct")}
@@ -31,7 +31,7 @@ const ReferralManagement = () => {
           <button
             className={`ml-4 px-6 py-2 font-medium text-sm rounded-md focus:outline-none transition-all duration-200 ${
               activeTab === "team"
-                ? "bg-blue-500 text-white"
+                ? "bg-purple-500 text-white"
                 : "bg-white text-gray-700 border border-gray-300"
             }`}
             onClick={() => handleTabChange("team")}

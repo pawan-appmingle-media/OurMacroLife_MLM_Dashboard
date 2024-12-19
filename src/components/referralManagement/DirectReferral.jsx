@@ -1,20 +1,26 @@
 import React, { useState } from "react";
+import { FaCheckCircle } from "react-icons/fa";
+import { GiTwoCoins } from "react-icons/gi";
 
 const DirectReferral = () => {
   const [referralCode, setReferralCode] = useState("");
-  const [coins, setCoins] = useState("");
-  const [status, setStatus] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleReferralCodeChange = (e) => {
-    setReferralCode(e.target.value);
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      // Allow only digits
+      setReferralCode(value);
+    }
   };
 
-  const handleCoinsChange = (e) => {
-    setCoins(e.target.value);
-  };
-
-  const handleStatusChange = (e) => {
-    setStatus(e.target.value);
+  const handleSubmit = () => {
+    if (referralCode.trim() !== "") {
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3 * 1000); // Hide success message after 3 seconds
+    }
   };
 
   return (
@@ -23,96 +29,47 @@ const DirectReferral = () => {
       <h1 className="text-2xl font-bold mb-6">Direct Referral</h1>
 
       {/* Introduction */}
-      <div className="bg-white p-6 rounded-md shadow-md mb-6">
-        <p className="text-lg font-semibold mb-4">About Coins</p>
-        <p className="text-sm text-gray-600">
-          Coins are earned through successful referrals in the MLM system. The
-          more users you refer, the more coins you can accumulate.
+      <div className="bg-white p-6 rounded-md shadow-md mb-4">
+        <p className="text-lg font-semibold mb-4">Direct Referral</p>
+        <p className="text-md text-gray-600">
+          Manage your MLM network effortlessly with our Referral Management
+          Program. Admins can set custom coin rewards for direct referrals,
+          ensuring transparency and motivation for your team. Tailor incentives
+          to align with your goals and track referral performance in real time.
+          Boost engagement and growth with a personalized rewards system!
         </p>
-      </div>
-
-      {/* Referral Form */}
-      <div className="bg-white p-6 rounded-md shadow-md mb-6">
-        <h3 className="text-xl font-semibold mb-4">Referral Information</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="referralCode"
-              className="block text-sm font-medium text-gray-600 mb-2"
-            >
-              Referral Code
-            </label>
+        <div className="my-2 w-1/3">
+          <label
+            htmlFor="referralCode"
+            className="block text-sm font-medium text-purple-500 mb-2"
+          >
+            Enter Direct Referral Coins
+          </label>
+          <div className="relative flex p-1">
             <input
               id="referralCode"
               type="text"
               value={referralCode}
               onChange={handleReferralCodeChange}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Enter referral code"
+              className="w-full px-8 border border-gray-300 rounded-md"
+              placeholder="Enter Coins"
             />
-          </div>
-          <div>
-            <label
-              htmlFor="coins"
-              className="block text-sm font-medium text-gray-600 mb-2"
+            <GiTwoCoins className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
+            <button
+              type="button" // Change to "button" to avoid form submission
+              className="bg-purple-500 text-white rounded-sm ml-2 py-2 px-4 active:border-none"
+              onClick={handleSubmit}
             >
-              Coins Earned
-            </label>
-            <input
-              id="coins"
-              type="number"
-              value={coins}
-              onChange={handleCoinsChange}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Enter coins earned"
-            />
+              Submit
+            </button>
           </div>
+          {showSuccess && (
+            <p className="flex text-green-700 text-xs mr-6 justify-end font-bold">
+              Success
+              <FaCheckCircle className="m-1" />
+            </p>
+          )}
         </div>
-
-        <div className="mt-4">
-          <label
-            htmlFor="status"
-            className="block text-sm font-medium text-gray-600 mb-2"
-          >
-            Referral Status
-          </label>
-          <input
-            id="status"
-            type="text"
-            value={status}
-            onChange={handleStatusChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Enter referral status"
-          />
-        </div>
-      </div>
-
-      {/* Referral Data Listing */}
-      <div className="bg-white p-6 rounded-md shadow-md">
-        <h3 className="text-xl font-semibold mb-4">Referral Data</h3>
-        <table className="min-w-full table-auto">
-          <thead className="border-b">
-            <tr>
-              <th className="px-4 py-2 text-left">Referral Code</th>
-              <th className="px-4 py-2 text-left">Coins Earned</th>
-              <th className="px-4 py-2 text-left">Referral Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Add example referral data rows here */}
-            <tr className="border-b hover:bg-gray-50">
-              <td className="px-4 py-2">REF123</td>
-              <td className="px-4 py-2">50</td>
-              <td className="px-4 py-2">Active</td>
-            </tr>
-            <tr className="border-b hover:bg-gray-50">
-              <td className="px-4 py-2">REF124</td>
-              <td className="px-4 py-2">30</td>
-              <td className="px-4 py-2">Pending</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   );
