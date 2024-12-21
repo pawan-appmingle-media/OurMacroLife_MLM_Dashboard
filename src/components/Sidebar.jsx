@@ -10,23 +10,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { BiSolidPurchaseTagAlt, BiSupport } from "react-icons/bi";
 import { IoAnalyticsSharp } from "react-icons/io5";
-import { MdInventory, MdOutlinePayment } from "react-icons/md";
+import { MdOutlinePayment } from "react-icons/md";
 
-import {
-  FaCogs,
-  FaDollarSign,
-  FaProductHunt,
-  FaTruck,
-  FaUser,
-} from "react-icons/fa";
+import { FaCogs, FaDollarSign, FaProductHunt, FaUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import { FiMenu } from "react-icons/fi";
-import { MdCategory, MdDashboard } from "react-icons/md";
-import {
-  RiCouponFill,
-  RiLogoutBoxLine,
-  RiMenuUnfold4Line,
-} from "react-icons/ri";
+import { MdDashboard } from "react-icons/md";
+import { RiLogoutBoxLine, RiMenuUnfold4Line } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
@@ -70,21 +60,16 @@ const Sidebar = () => {
       icon: <BiSolidPurchaseTagAlt />,
     },
     { to: "/users", text: "Users Management", icon: <FaUsers /> },
-    {
-      to: "/products",
-      text: "Products Management",
-      icon: <BiSolidPurchaseTagAlt />,
-    },
     { to: "/payment", text: "Payment Management", icon: <MdOutlinePayment /> },
-    { to: "/orders", text: "Orders", icon: <FaTruck /> },
-    { to: "/category", text: "Category", icon: <MdCategory /> },
-    { to: "/coupons", text: "Coupons", icon: <RiCouponFill /> },
-    { to: "/finance", text: "Finance", icon: <FaDollarSign /> },
-    { to: "/analatics", text: "Analytics", icon: <IoAnalyticsSharp /> },
-    { to: "/teams", text: "Teams", icon: <FaUsers /> },
-    { to: "/support", text: "Support", icon: <BiSupport /> },
-    { to: "/inventory", text: "Inventory", icon: <MdInventory /> },
-    { to: "/profile", text: "Profile", icon: <FaUser /> },
+    { to: "/finance", text: "Finance Management", icon: <FaDollarSign /> },
+    { to: "/teams", text: "Teams Management", icon: <FaUsers /> },
+    { to: "/profile", text: "Profile Manage", icon: <FaUser /> },
+    {
+      to: "/analatics",
+      text: "Analytics Management",
+      icon: <IoAnalyticsSharp />,
+    },
+    { to: "/support", text: "Customer Support", icon: <BiSupport /> },
     { to: "/settings", text: "Settings", icon: <FaCogs /> },
     {
       to: "/",

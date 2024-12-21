@@ -4,7 +4,6 @@ import AnalaticsManagement from "./components/analaticsManagement/AnalaticsManag
 import AddCategoryForm from "./components/categoryManagement/AddCategoryForm";
 import AddSubCategoryForm from "./components/categoryManagement/AddSubCategoryForm";
 import CategoryManager from "./components/categoryManagement/CategoryManager";
-
 import SubCategoryListing from "./components/categoryManagement/SubCategoryListing.jsx";
 import CommonLayout from "./components/commonLayout/CommonLayout.jsx";
 import CouponForm from "./components/couponManagement/CouponForm.jsx";
@@ -20,7 +19,7 @@ import AddProduct from "./components/productManagement/AddProduct.jsx";
 import EditAllProducts from "./components/productManagement/EditAllProducts.jsx";
 import PreviewAllProducts from "./components/productManagement/PreviewAllProducts.jsx";
 import ProductList from "./components/productManagement/ProductList.jsx";
-import ProfileUpload from "./components/profileManagement/ProfilePage.jsx";
+import Profile from "./components/profileManagement/Profile.jsx";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute.jsx";
 import Purchase from "./components/purchase/Purchase.jsx";
 import Referral from "./components/referralManagement/ReferralManagement.jsx";
@@ -29,7 +28,7 @@ import Settings from "./components/Settings";
 import SignUp from "./components/SignUp.jsx";
 import Support from "./components/supportManagement/Support.jsx";
 import Teams from "./components/teamsManagement/Teams.jsx";
-import Users from "./components/users/Users.jsx";
+import Users from "./components/usersManagement/Users.jsx";
 
 const App = () => {
   return (
@@ -76,7 +75,7 @@ const App = () => {
         />
         <Route
           path="/profile"
-          element={<ProtectedRoute Component={ProfileUpload} />}
+          element={<ProtectedRoute Component={Profile} />}
         />
         <Route
           path="/analatics"

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import imagee from "../../images/profiledummy.png";
 import CommonHeader from "../commonHeader/CommonHeader";
 
-const ProfileUpload = () => {
+const Profile = () => {
   const [vendor, setVendor] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -119,7 +119,7 @@ const ProfileUpload = () => {
 
         {/* Modal for Logo Change */}
         {isOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur flex justify-center items-center z-[1200]">
             <div className="bg-white p-5 rounded-lg shadow-lg w-72">
               <h2 className="mb-4 text-lg font-semibold">Change Logo</h2>
               <form onSubmit={handleLogoSubmit} className="space-y-3">
@@ -233,4 +233,4 @@ const ProfileUpload = () => {
   );
 };
 
-export default ProfileUpload;
+export default Profile;
